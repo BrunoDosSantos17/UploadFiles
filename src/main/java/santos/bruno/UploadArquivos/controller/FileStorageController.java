@@ -1,6 +1,7 @@
 package santos.bruno.UploadArquivos.controller;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -53,7 +54,7 @@ public class FileStorageController {
     }
 
     @GetMapping("/download/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFiles(@PathVariable String fileName, HttpRequestHandlerServlet request) throws IOException {
+    public ResponseEntity<Resource> downloadFiles(@PathVariable String fileName, HttpServletRequest request) throws IOException {
         Path filePath = fileStorageLocation.resolve(fileName).normalize();
 
         try {
